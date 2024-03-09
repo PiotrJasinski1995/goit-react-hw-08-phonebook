@@ -1,57 +1,54 @@
-import ContactForm from './ContactForm/ContactForm';
-import ContactList from './ContactList/ContactList';
-import Filter from './Filter/Filter';
-import Section from './Section/Section';
-import MainHeading from './MainHeading/MainHeading';
-import Notification from './Notification/Notification';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  selectContacts,
-  selectError,
-  selectIsLoading,
-} from '../redux/selectors';
-import { fetchContacts } from '../redux/operations';
-import Loader from './Loader/Loader';
-import ColumnDiv from './ColumnDiv/ColumnDiv';
+import { useEffect, lazy } from 'react';
+import { useDispatch } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
+import SharedLayout from './SharedLayout/SharedLayout';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
+import RestrictedRoute from './RestrictedRoute/RestrictedRoute';
+import { refreshUser } from '../redux/auth/operations';
+import { useAuth } from 'hooks/useAuth';
+
+const HomePage = lazy(() => import('../pages/Home'));
+const RegisterPage = lazy(() => import('../pages/Register'));
+const LoginPage = lazy(() => import('../pages/Login'));
+const ContactsPage = lazy(() => import('../pages/Contacts'));
 
 const App = () => {
-  const contacts = useSelector(selectContacts);
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
   const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(refreshUser());
   }, [dispatch]);
 
-  return (
-    <>
-      <MainHeading>Phonebook App</MainHeading>
-      <Section title="Phonebook">
-        <ColumnDiv>
-          <ContactForm />
-        </ColumnDiv>
-      </Section>
-      <Section title="Contacts">
-        {error && <b>{error}!!!</b>}
-        {!error && (
-          <>
-            {contacts.length === 0 ? (
-              <Notification message="No contacts in phonebook" />
-            ) : (
-              <>
-                <ColumnDiv>
-                  <Filter />
-                  {isLoading && <Loader />}
-                </ColumnDiv>
-                <ContactList />
-              </>
-            )}
-          </>
-        )}{' '}
-      </Section>
-    </>
+  return isRefreshing ? (
+    <b>Refreshing user...</b>
+  ) : (
+    <Routes>
+      <Route path="/" element={<SharedLayout />}>
+        <Route index element={<HomePage />} />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute
+              redirectTo="/contacts"
+              component={<RegisterPage />}
+            />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
+          }
+        />
+        <Route
+          path="/tasks"
+          element={
+            <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+          }
+        />
+      </Route>
+    </Routes>
   );
 };
 
