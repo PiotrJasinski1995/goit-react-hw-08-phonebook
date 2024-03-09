@@ -18,6 +18,11 @@ const clearAuthHeader = () => {
  * POST @ /users/signup
  * body: { name, email, password }
  */
+
+/****USERS****/
+//q1w2e3r4 q1w2e3r4@q1w2e3r4.com 12345678
+//t1y2u3i4 t1y2u3i4@t1y2u3i4.com 12345678
+
 export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
@@ -86,7 +91,7 @@ export const refreshUser = createAsyncThunk(
     try {
       // If there is a token, add it to the HTTP header and perform the request
       setAuthHeader(persistedToken);
-      const res = await axios.get('/users/me');
+      const res = await axios.get('/users/current');
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

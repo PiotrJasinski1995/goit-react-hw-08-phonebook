@@ -1,7 +1,12 @@
 import PropTypes from 'prop-types';
 import { ContactStyled } from './styled';
 
-const Contact = ({ id = '', name = '', phone = '', onHandleDeleteContact }) => {
+const Contact = ({
+  id = '',
+  name = '',
+  number = '',
+  onHandleDeleteContact,
+}) => {
   const handleDeleteContact = () => {
     onHandleDeleteContact(id);
   };
@@ -9,7 +14,7 @@ const Contact = ({ id = '', name = '', phone = '', onHandleDeleteContact }) => {
   return (
     <ContactStyled>
       <p>
-        {name}: {phone}
+        {name}: {number}
       </p>
       <button type="button" onClick={handleDeleteContact}>
         Delete
@@ -21,7 +26,7 @@ const Contact = ({ id = '', name = '', phone = '', onHandleDeleteContact }) => {
 Contact.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string,
-  phone: PropTypes.string,
+  number: PropTypes.string,
   onHandleDeleteContact: PropTypes.func,
 };
 

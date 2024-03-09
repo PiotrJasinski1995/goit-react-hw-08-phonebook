@@ -20,14 +20,14 @@ const ContactList = () => {
       ) : (
         <ul>
           {filteredContacts.map(contact => {
-            const { id, name, phone } = contact;
+            const { id, name, number } = contact;
 
             return (
               <li key={id}>
                 <Contact
                   id={id}
                   name={name}
-                  phone={phone}
+                  number={number}
                   onHandleDeleteContact={handleDeleteContact}
                 />
               </li>
