@@ -15,9 +15,6 @@ const Contact = ({
     <>
       <StyledTd>{name}</StyledTd>
       <StyledTd>{number}</StyledTd>
-      {/* <p>
-        {name}: {number}
-      </p> */}
       <ButtonStyled type="button" onClick={handleDeleteContact}>
         <span>Delete</span>
       </ButtonStyled>

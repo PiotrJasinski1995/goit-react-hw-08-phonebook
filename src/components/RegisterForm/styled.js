@@ -5,7 +5,7 @@ export const RegisterFormContainerStyled = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: calc(100vw - 200px);
+  height: calc(100vh - 200px);
 `;
 
 export const RegisterFormStyled = styled.form`

@@ -5,7 +5,7 @@ export const LoginFormContainerStyled = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: calc(100vw - 200px);
+  height: calc(100vh - 200px);
 `;
 
 export const LoginFormStyled = styled.form`
