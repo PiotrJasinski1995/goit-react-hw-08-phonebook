@@ -1,9 +1,9 @@
 import { InfinitySpin } from 'react-loader-spinner';
 import { LoaderStyled, LoaderBackground } from './styled';
 
-const Loader = () => {
+const Loader = ({ $absolute }) => {
   return (
-    <LoaderStyled>
+    <LoaderStyled $absolute={$absolute}>
       <LoaderBackground>
         <InfinitySpin
           visible={true}

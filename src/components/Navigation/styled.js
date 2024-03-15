@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
+export const NavStyled = styled.nav`
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+`;
+
 export const NavLinkStyled = styled(NavLink)`
   text-decoration: none;
   color: black;
@@ -10,5 +16,9 @@ export const NavLinkStyled = styled(NavLink)`
   &:focus,
   &.active {
     color: red;
+  }
+
+  &.active {
+    font-weight: 600;
   }
 `;

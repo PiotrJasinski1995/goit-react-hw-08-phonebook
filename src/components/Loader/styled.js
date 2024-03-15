@@ -1,10 +1,17 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const LoaderStyled = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
   height: 20px;
+
+  ${props =>
+    props.$absolute &&
+    css`
+      position: absolute;
+      bottom: -38px;
+    `}
 `;
 
 export const LoaderBackground = styled.span`

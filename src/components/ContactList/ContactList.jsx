@@ -3,6 +3,7 @@ import Notification from 'components/Notification/Notification';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFilteredContacts } from '../../redux/contacts/selectors';
 import { deleteContact } from '../../redux/contacts/operations';
+import { StyledTh, StyledTr, TableContainer } from './styled';
 
 const ContactList = () => {
   const dispatch = useDispatch();
@@ -19,20 +20,34 @@ const ContactList = () => {
         <Notification message="No contacts matching given criteria"></Notification>
       ) : (
         <ul>
-          {filteredContacts.map(contact => {
-            const { id, name, number } = contact;
+          <TableContainer>
+            <table>
+              <thead>
+                <tr>
+                  <StyledTh>Name</StyledTh>
+                  <StyledTh>Phone</StyledTh>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredContacts.map(contact => {
+                  const { id, name, number } = contact;
 
-            return (
-              <li key={id}>
-                <Contact
-                  id={id}
-                  name={name}
-                  number={number}
-                  onHandleDeleteContact={handleDeleteContact}
-                />
-              </li>
-            );
-          })}
+                  return (
+                    <>
+                      <StyledTr key={id}>
+                        <Contact
+                          id={id}
+                          name={name}
+                          number={number}
+                          onHandleDeleteContact={handleDeleteContact}
+                        />
+                      </StyledTr>
+                    </>
+                  );
+                })}
+              </tbody>
+            </table>
+          </TableContainer>
         </ul>
       )}
     </>

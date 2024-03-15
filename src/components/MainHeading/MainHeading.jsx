@@ -1,7 +1,11 @@
 import { MainHeadingStyled } from './styled';
 
-const MainHeading = ({ children }) => {
-  return <MainHeadingStyled>{children}</MainHeadingStyled>;
+const MainHeading = ({ $visuallyhidden, children }) => {
+  return (
+    <MainHeadingStyled $visuallyhidden={$visuallyhidden}>
+      {children}
+    </MainHeadingStyled>
+  );
 };
 
 export default MainHeading;

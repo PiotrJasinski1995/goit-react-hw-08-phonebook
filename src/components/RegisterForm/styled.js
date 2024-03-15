@@ -1,5 +1,13 @@
 import styled from 'styled-components';
 
+export const RegisterFormContainerStyled = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: calc(100vw - 200px);
+`;
+
 export const RegisterFormStyled = styled.form`
   display: inline-flex;
   flex-direction: column;

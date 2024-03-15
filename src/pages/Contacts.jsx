@@ -31,13 +31,13 @@ export default function Contacts() {
       <Helmet>
         <title>Contacts</title>
       </Helmet>
-      <MainHeading visually-hidden>Your contacts</MainHeading>
-      <Section title="Phonebook">
+      <MainHeading $visuallyhidden="true">Your contacts</MainHeading>
+      <Section title="Phonebook" $centered="true">
         <ColumnDiv>
           <ContactForm />
         </ColumnDiv>
       </Section>
-      <Section title="Contacts">
+      <Section title="Contacts" $centered="true">
         {error && <b>{error}!!!</b>}
         {!error && (
           <>
@@ -47,7 +47,7 @@ export default function Contacts() {
               <>
                 <ColumnDiv>
                   <Filter />
-                  {isLoading && <Loader />}
+                  {isLoading && <Loader $absolute="true" />}
                 </ColumnDiv>
                 <ContactList />
               </>

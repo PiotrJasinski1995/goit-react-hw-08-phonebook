@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/operations';
 import { nanoid } from '@reduxjs/toolkit';
-import { RegisterFormStyled } from './styled';
+import { RegisterFormContainerStyled, RegisterFormStyled } from './styled';
 
 const RegisterForm = () => {
   const nameInputId = nanoid();
@@ -23,15 +23,17 @@ const RegisterForm = () => {
   };
 
   return (
-    <RegisterFormStyled onSubmit={handleSubmit} autoComplete="off">
-      <label htmlFor={nameInputId}>Username</label>
-      <input type="text" name="name" id={nameInputId} required />
-      <label htmlFor={emailInputId}>Email</label>
-      <input type="email" name="email" id={emailInputId} required />
-      <label htmlFor={passwordInputId}>Password</label>
-      <input type="password" name="password" id={passwordInputId} required />
-      <button type="submit">Register</button>
-    </RegisterFormStyled>
+    <RegisterFormContainerStyled>
+      <RegisterFormStyled onSubmit={handleSubmit} autoComplete="off">
+        <label htmlFor={nameInputId}>Username</label>
+        <input type="text" name="name" id={nameInputId} required />
+        <label htmlFor={emailInputId}>Email</label>
+        <input type="email" name="email" id={emailInputId} required />
+        <label htmlFor={passwordInputId}>Password</label>
+        <input type="password" name="password" id={passwordInputId} required />
+        <button type="submit">Register</button>
+      </RegisterFormStyled>
+    </RegisterFormContainerStyled>
   );
 };
 

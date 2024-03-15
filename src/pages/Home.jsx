@@ -3,13 +3,15 @@ import MainHeadingContainer from 'components/MainHeadingContainer/MainHeadingCon
 
 export default function Home() {
   return (
-    <MainHeadingContainer>
-      <MainHeading>
-        Phonebook welcome page{' '}
-        <span role="img" aria-label="Greeting icon">
-          💁‍♀️
-        </span>
-      </MainHeading>
-    </MainHeadingContainer>
+    <>
+      <MainHeadingContainer>
+        <MainHeading>
+          Phonebook welcome page{' '}
+          <span role="img" aria-label="Greeting icon">
+            💁‍♀️
+          </span>
+        </MainHeading>
+      </MainHeadingContainer>
+    </>
   );
 }

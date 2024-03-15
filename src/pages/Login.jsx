@@ -1,5 +1,7 @@
 import { Helmet } from 'react-helmet';
-import LoginForm from '../components/LoginForm/LoginFrom';
+import LoginForm from '../components/LoginForm/LoginForm';
+import Section from 'components/Section/Section';
+import MainHeading from 'components/MainHeading/MainHeading';
 
 export default function Login() {
   return (
@@ -7,7 +9,10 @@ export default function Login() {
       <Helmet>
         <title>Login</title>
       </Helmet>
-      <LoginForm />
+      <MainHeading $visuallyhidden="true">Login</MainHeading>
+      <Section>
+        <LoginForm />
+      </Section>
     </div>
   );
 }

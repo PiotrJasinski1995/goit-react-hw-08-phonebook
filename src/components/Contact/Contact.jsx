@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { ContactStyled } from './styled';
+import { ButtonStyled, StyledTd } from './styled';
 
 const Contact = ({
   id = '',
@@ -12,14 +12,16 @@ const Contact = ({
   };
 
   return (
-    <ContactStyled>
-      <p>
+    <>
+      <StyledTd>{name}</StyledTd>
+      <StyledTd>{number}</StyledTd>
+      {/* <p>
         {name}: {number}
-      </p>
-      <button type="button" onClick={handleDeleteContact}>
-        Delete
-      </button>
-    </ContactStyled>
+      </p> */}
+      <ButtonStyled type="button" onClick={handleDeleteContact}>
+        <span>Delete</span>
+      </ButtonStyled>
+    </>
   );
 };
 
